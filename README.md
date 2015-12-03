@@ -1,4 +1,4 @@
-# Integración de la función cos(x) con el método de Simpson usando hebras
+## Integración de la función cos(x) entre 0 y 20 con el método de Simpson usando hebras
 
 Compilado con gcc. Programado en MACOSX
 
