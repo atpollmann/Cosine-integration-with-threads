@@ -17,8 +17,8 @@ void getOptions(Options *option, int argc, char **argv) {
     while((opt = getopt(argc, argv, "p:")) != -1) {
         switch(opt) {
             case 'p':
-                if(stringToPositiveInteger(optarg, &partitionsCount)
-                        && (partitionsCount % PARTITION_MULTIPLE) != 0) {
+                if(!stringToPositiveInteger(optarg, &partitionsCount)
+                        || (partitionsCount % PARTITION_MULTIPLE) != 0) {
                     printf("Numero de particiones invalido (%s)\n\n", optarg);
                     printUsage(argv[0]);
                     exit(EXIT_SUCCESS);

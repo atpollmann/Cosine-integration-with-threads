@@ -2,9 +2,13 @@
 #include "../includes/Utils.h"
 
 int stringToPositiveInteger(char* string, int* integer) {
-    // TODO: implement strtol
-    *integer = atoi(string);
-    if(*integer < 1)
-        return 0;
-    return 1;
+    
+    char *end;
+    int i = (int)strtol(string, &end, 10);
+
+    if(i) {
+    	*integer = i;
+    	return 1;
+    }
+    return 0;
 }
