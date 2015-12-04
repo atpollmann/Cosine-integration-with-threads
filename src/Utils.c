@@ -2,7 +2,6 @@
 #include "../includes/Utils.h"
 
 int stringToPositiveInteger(char* string, int* integer) {
-    
     char *end;
     int i = (int)strtol(string, &end, 10);
 

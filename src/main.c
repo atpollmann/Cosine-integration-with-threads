@@ -3,6 +3,9 @@
 #include "../includes/Summation.h"
 
 int main(int argc, char** argv) {
+    int i, thState;
+    void *status;
+
     Options options;
     getOptions(&options, argc, argv);
 
@@ -15,20 +18,19 @@ int main(int argc, char** argv) {
 
     prepareThreads(threads, &options);
 
-    int i, t;
-    void *status;
     for(i = 0; i < SUM_THREADS_COUNT; i++) {
-        t = pthread_create(&threads[i].id, &threadsAttr, startThread, (void *)&threads[i]);
-        if(t) {
+        thState = pthread_create(&threads[i].id, &threadsAttr, startThread, (void *)&threads[i]);
+        if(thState) {
             printf("Error al crear hebra\n");
             exit(EXIT_FAILURE);
         }
     }
-     // Free the attribute and wait for workers
+    
+    // Free the attribute and wait for workers
     pthread_attr_destroy(&threadsAttr);
     for(i = 0; i < SUM_THREADS_COUNT; i++) {
-        t = pthread_join(threads[i].id, &status);
-        if(t) {
+        thState = pthread_join(threads[i].id, &status);
+        if(thState) {
             printf("Error al unir hebras\n");
             exit(EXIT_FAILURE);
         }

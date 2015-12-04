@@ -13,7 +13,6 @@ void getOptions(Options *option, int argc, char **argv) {
         abort();
     }
 
-
     while((opt = getopt(argc, argv, "p:")) != -1) {
         switch(opt) {
             case 'p':
